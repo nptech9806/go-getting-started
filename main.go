@@ -25,5 +25,9 @@ func main() {
 		c.HTML(http.StatusOK, "health.tmpl.html", nil)
 	})
 
+	router.GET("/pingdom", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "pingdom.tmpl.html", nil)
+	})
+	
 	router.Run(":" + port)
 }
