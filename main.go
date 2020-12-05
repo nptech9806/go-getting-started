@@ -37,7 +37,7 @@ func main() {
 	router.GET("/us-east-1", func(c *gin.Context) {
 		sess, err := session.NewSession(&aws.Config{Region: aws.String("us-east-1")})
 		if err != nil {
-			c.String(http.StatusUnauthorized, err)
+			c.String(http.StatusUnauthorized, err.Error())
 		}
 	})
 
