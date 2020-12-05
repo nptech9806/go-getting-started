@@ -22,7 +22,8 @@ func main() {
 	router.Static("/static", "static")
 
 	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "health.tmpl.html", nil)
+		//c.HTML(http.StatusOK, "health.tmpl.html", nil)
+		c.HTML(http.StatusOK, "pingdom.tmpl.html", nil)
 	})
 
 	router.GET("/pingdom", func(c *gin.Context) {
