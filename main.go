@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
-	//"github.com/aws/aws-sdk-go/service/timestreamquery"
+	"github.com/aws/aws-sdk-go/service/timestreamquery"
 	"log"
 	"net/http"
 	"os"
@@ -39,7 +39,12 @@ func main() {
 		if err != nil {
 			c.String(http.StatusUnauthorized, err.Error())
 		}
-		//querySvc := timestreamquery.New(sess)
+		querySvc := timestreamquery.New(sess)
+		
+		if querySvc != nil {
+			c.String(http.StatusBadRequest, err.Error())
+		}
+		
 	})
 
 	router.GET("/pingdom", func(c *gin.Context) {
