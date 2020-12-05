@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	 "time"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/heroku/x/hmetrics/onload"
@@ -25,6 +26,11 @@ func main() {
 		//c.HTML(http.StatusOK, "health.tmpl.html", nil)
 		c.HTML(http.StatusOK, "pingdom.tmpl.html", nil)
 	})
+	
+	router.GET("/sleep2", func(c *gin.Context) {
+		time.Sleep(2 * time.Second)
+	})
+
 
 	router.GET("/pingdom", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "pingdom.tmpl.html", nil)
