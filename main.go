@@ -1,6 +1,9 @@
 package main
 
 import (
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/timestreamquery"
 	"log"
 	"net/http"
 	"os"
@@ -31,6 +34,16 @@ func main() {
 		time.Sleep(2 * time.Second)
 	})
 
+	router.GET("/us-east-1", func(c *gin.Context) {
+		sess, err := session.NewSession(&aws.Config{Region: aws.String("us-east-1")})
+		if err != nil {
+			c.String(http.StatusUnauthorized, err)
+		}
+		else 
+		{
+		    querySvc := timestreamquery.New(sess)
+		}
+	})
 
 	router.GET("/pingdom", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "pingdom.tmpl.html", nil)
