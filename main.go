@@ -39,10 +39,6 @@ func main() {
 		if err != nil {
 			c.String(http.StatusUnauthorized, err)
 		}
-		else 
-		{
-		    querySvc := timestreamquery.New(sess)
-		}
 	})
 
 	router.GET("/pingdom", func(c *gin.Context) {
