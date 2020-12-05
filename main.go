@@ -51,7 +51,59 @@ func main() {
 		var f *os.File
 		runQuery(&queryPtr, querySvc, f)
 	})
+	
+	router.GET("/us-east-2", func(c *gin.Context) {
+		sess, err := session.NewSession(&aws.Config{Region: aws.String("us-east-2")})
+		if err != nil {
+			c.String(http.StatusUnauthorized, err.Error())
+		}
+		querySvc := timestreamquery.New(sess)
+		
+		if querySvc == nil {
+			c.String(http.StatusBadRequest, "querySvc is nil  ")
+		}
 
+		queryPtr := "select 1"
+                
+		var f *os.File
+		runQuery(&queryPtr, querySvc, f)
+	})
+
+	router.GET("/us-west-2", func(c *gin.Context) {
+		sess, err := session.NewSession(&aws.Config{Region: aws.String("us-west-2")})
+		if err != nil {
+			c.String(http.StatusUnauthorized, err.Error())
+		}
+		querySvc := timestreamquery.New(sess)
+		
+		if querySvc == nil {
+			c.String(http.StatusBadRequest, "querySvc is nil  ")
+		}
+
+		queryPtr := "select 1"
+                
+		var f *os.File
+		runQuery(&queryPtr, querySvc, f)
+	})
+	
+	router.GET("/eu-west-1", func(c *gin.Context) {
+		sess, err := session.NewSession(&aws.Config{Region: aws.String("eu-west-1")})
+		if err != nil {
+			c.String(http.StatusUnauthorized, err.Error())
+		}
+		querySvc := timestreamquery.New(sess)
+		
+		if querySvc == nil {
+			c.String(http.StatusBadRequest, "querySvc is nil  ")
+		}
+
+		queryPtr := "select 1"
+                
+		var f *os.File
+		runQuery(&queryPtr, querySvc, f)
+	})
+	
+	
 	router.GET("/pingdom", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "pingdom.tmpl.html", nil)
 	})
