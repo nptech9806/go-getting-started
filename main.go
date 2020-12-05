@@ -17,7 +17,7 @@ func main() {
 	port := os.Getenv("PORT")
 
 	if port == "" {
-		log.Info("$PORT must be set")
+		log.Print("$PORT must be set")
 		port = "8000"
 	}
 
