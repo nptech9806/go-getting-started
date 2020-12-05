@@ -43,7 +43,7 @@ func main() {
 		querySvc := timestreamquery.New(sess)
 		
 		if querySvc == nil {
-			c.String(http.StatusBadRequest, "querySvc is nil")
+			c.String(http.StatusBadRequest, "querySvc is nil  ")
 		}
 
 		queryPtr := "select 1"
