@@ -45,7 +45,11 @@ func main() {
 		if querySvc == nil {
 			c.String(http.StatusBadRequest, "querySvc is nil")
 		}
-		
+
+		queryPtr := "select 1"
+                
+		var f *os.File
+		runQuery(&queryPtr, querySvc, f)
 	})
 
 	router.GET("/pingdom", func(c *gin.Context) {
